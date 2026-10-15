@@ -1,6 +1,6 @@
 {
   "name": "@korb-sh/korb",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "korb — receive-side webhook gateway. Catch every webhook, never drop one again. https://korb.sh",
   "license": "MIT",
   "keywords": [

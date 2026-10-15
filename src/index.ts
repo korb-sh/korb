@@ -202,12 +202,20 @@ process.on("unhandledRejection", (err) => {
 // run only as a real bin — importing (tests) must not execute the CLI.
 // pathToFileURL resolves argv[1] (often relative) the way import.meta.url
 // is spelled — naive string concat silently never matches.
+// realpathSync is REQUIRED: bins are invoked through symlinks (npm -g,
+// npx, node_modules/.bin) — argv[1] is then the LINK path while
+// import.meta.url is the real file, and the naive compare silently
+// skips main() (exit 0, no output). Node's documented main-module check.
 // NOTE: success paths set exitCode and RETURN — process.exit() here would
 // truncate buffered stdout on pipes/redirects (console.log to a file is
 // async; the exit kills the flush). stderr is sync, so error exits are
 // safe to hard-exit.
+import { realpathSync } from "node:fs";
 import { pathToFileURL } from "node:url";
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href
+) {
   main(process.argv.slice(2)).then(
     (code) => {
       process.exitCode = code;
