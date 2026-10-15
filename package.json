@@ -1,6 +1,6 @@
 {
   "name": "@korb-sh/korb",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "korb — receive-side webhook gateway. Catch every webhook, never drop one again. https://korb.sh",
   "license": "MIT",
   "keywords": [
@@ -12,7 +12,12 @@
     "debug",
     "stripe",
     "shopify",
-    "github"
+    "github",
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "claude",
+    "cursor"
   ],
   "author": "korb-sh",
   "repository": {
