@@ -1,0 +1,48 @@
+{
+  "name": "@korb-sh/korb",
+  "version": "0.1.2",
+  "description": "korb — receive-side webhook gateway. Catch every webhook, never drop one again. https://korb.sh",
+  "license": "MIT",
+  "keywords": [
+    "webhook",
+    "webhooks",
+    "gateway",
+    "relay",
+    "ingest",
+    "debug",
+    "stripe",
+    "shopify",
+    "github"
+  ],
+  "author": "korb-sh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/korb-sh/korb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/korb-sh/korb/issues"
+  },
+  "homepage": "https://korb.sh",
+  "type": "module",
+  "bin": {
+    "korb": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/patch-bin.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  }
+}
+
